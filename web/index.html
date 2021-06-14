@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Teachers Do More Than Teach: Compressing Image-to-Image Models.">
+    <meta name="keywords" content="GAN Compression, Generative Model, Neural Architecture Search, Knowledge Distillation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teachers Do More Than Teach: Compressing Image-to-Image Models</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">Teachers Do More Than Teach: Compressing Image-to-Image Models</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=X9iggBcAAAAJ">Qing Jin</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://alanspike.github.io">Jian Ren</a><sup>2</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=6czTBiUAAAAJ">Oliver J. Woodford</a><sup>*</sup>,
+                            </span>
+                            <span class="author-block">
+                                Jiazhuo Wang<sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=tBIAgtgAAAAJ">Geng Yuan</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://web.northeastern.edu/yanzhiwang/">Yanzhi Wang</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="http://www.stulyakov.com/">Sergey Tulyakov</a><sup>2</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Northeastern University,</span>
+                            <span class="author-block"><sup>2</sup>Snap Inc.,</span>
+                            <span class="author-block"><sup>*</sup>Work done while at Snap Inc.</span>
+                        </div>
+                        <h1 style="font-size:23px;font-weight:bold">CVPR 2021</h1>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>CVPR</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2103.03467" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <span class="link-block">
+                                    <a href="" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/snap-research/CAT" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- deJQK
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-face">
+                        <video poster="" id="face" autoplay controls muted loop height="100%">
+                            <source src="videos/FaceForensics.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-sky">
+                        <video poster="" id="sky" autoplay controls muted loop height="100%">
+                            <source src="videos/Sky-Time-lapse.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-dog">
+                        <video poster="" id="dog" autoplay controls muted loop height="100%">
+                            <source src="videos/AFHQ-DOG-512x512.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-ffhq">
+                        <video poster="" id="ffhq" autoplay controls muted loop height="100%">
+                            <source src="videos/FFHQ_1024.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-anime">
+                        <video poster="" id="anime" autoplay controls muted loop height="100%">
+                            <source src="videos/Anime.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-church">
+                        <video poster="" id="church" autoplay controls muted loop height="100%">
+                            <source src="videos/LSUN-Church.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div align="center">
+            In- and Cross- Domain Video Generation
+        </div>
+    </section>
+    -->
+
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-two-thirds">
+                    <h2 class="title is-2">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Generative Adversarial Networks (GANs) have achieved huge success in generating high-fidelity images, however, they suffer from low efficiency due to tremendous computational cost and bulky memory usage.
+                            Recent efforts on compression GANs show noticeable progress in obtaining smaller generators by sacrificing image quality or involving a time-consuming searching process.
+                        </p>
+                        <p>
+                            In this work, we aim to address these issues by introducing a teacher network that provides a search space in which efficient network architectures can be found, in addition to performing knowledge distillation.
+                            First, we revisit the search space of generative models, introducing an inception-based residual block into generators.
+                            Second, to achieve target computation cost, we propose a one-step pruning algorithm that searches a student architecture from the teacher model and substantially reduces searching cost.
+                            It requires no L1 sparsity regularization and its associated hyper-parameters, simplifying the training procedure.
+                            Finally, we propose to distill knowledge through maximizing feature similarity between teacher and student via Kernel Alignment (KA).
+                            Our compressed networks achieve similar or even better image fidelity (FID, mIoU) than the original models with much-reduced computational cost, e.g., MACs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+        <!-- <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds">
+                <h2 class="title is-2">Video</h2>
+                <div class="publication-video">
+                    <iframe src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div> -->
+        <!--/ Paper video. -->
+    </section>
+
+
+    <!-- deJQK
+    <section class="section">
+        <div class="container">
+
+            <div class="columns is-centered">
+
+                <!- - 32 frames - ->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">32-Frames</h2>
+                        <p>
+                            FaceForensics video generation. We generate long sequences by unrolling the 16-frame trained
+                            motion generator
+                            for 32 steps.
+                        </p>
+                        <video id="FaceForensics-32" autoplay controls muted loop height="100%">
+                            <source src="videos/FaceForensics-32.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <!- -/ 32 frames - ->
+
+                <!- - 64 frames - ->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">64-Frames</h2>
+                        <p>
+                            FaceForensics video generation. We generate long sequences by unrolling the 16-frame trained
+                            motion generator
+                            for 64 steps.
+                        </p>
+                        <video id="FaceForensics-64" autoplay controls muted loop height="100%">
+                            <source src="videos/FaceForensics-64.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <!- - 64 frames - ->
+
+                <!- - 32 frames - ->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">32-Frames</h2>
+                        <p>
+                            (AFHQ-Dog, VoxCeleb) cross-domain video generation (512x512). We interpolate
+                            16-frame video to get 32 frames.
+                        </p>
+                        <video id="AFHQ-DOG-Interpolate_32" autoplay controls muted loop height="100%">
+                            <source src="videos/AFHQ-DOG-Interpolate_32.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <!- - 32 frames - ->
+
+            </div>
+
+
+            <!- - disentangle. - ->
+            <div class="columns is-centered">
+                <!- - 32 frames - ->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">Motion Diversity</h2>
+                        <p>
+                            Each row indicates synthesis diverse motion with the same content.
+                        </p>
+                        <video id="FaceForensics_SameCont_DiffMotion" autoplay controls muted loop height="100%">
+                            <source src="videos/FaceForensics_SameCont_DiffMotion.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <!- -/ 32 frames - ->
+
+                <!- - 64 frames - ->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">Content Diversity</h2>
+                        <p>
+                            Each row indicates applying same motion to different content codes.
+                        </p>
+                        <video id="FaceForensics_SameMotion_DiffCont" autoplay controls muted loop height="100%">
+                            <source src="videos/FaceForensics_SameMotion_DiffCont.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <!- - 64 frames - ->
+            </div>
+            <!- -/ disentangle. - ->
+        </div>
+    </section>
+    -->
+
+
+    <section class="section" id="BibTeX">
+        <div class="container content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>
+@inproceedings{jin2021cat,
+    title={Teachers Do More Than Teach: Compressing Image-to-Image Models},
+    author={Jin, Qing and Ren, Jian and Woodford, Oliver J and Wang, Jiazhuo and Yuan, Geng and Wang, Yanzhi and Tulyakov, Sergey},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+    pages={--},
+    year={2021}
+}
+      </code></pre>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div align="center" class="container">
+            <div class="columns is-centered">
+                <div class="content">
+                    This website is borrowed from <a href="https://bluer555.github.io/MoCoGAN-HD/">MoCoGAN-HD</a>.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
