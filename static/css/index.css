@@ -11,7 +11,6 @@ body {
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #dc143c;
 }
 
 .dnerf {
@@ -118,7 +117,7 @@ body {
 .results-carousel .item {
   margin: 5px;
   overflow: hidden;
-  border: 1px solid #bbb;
+  border: 1px solid #dc143c;
   border-radius: 10px;
   padding: 0;
   font-size: 0;
