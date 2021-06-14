@@ -5,12 +5,13 @@ body {
 
 .footer .icon-link {
     font-size: 25px;
-    color: #dc143c;
+    color: #000;
 }
 
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
+    color: #dc143c;
 }
 
 .dnerf {
